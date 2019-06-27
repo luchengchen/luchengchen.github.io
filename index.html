@@ -1,0 +1,263 @@
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  <title>½�ɳ��Ĳ���</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+</head>
+
+  <body>
+    <header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.png" alt="logo">
+      
+      <a href="/" class="title">½�ɳ��Ĳ���</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+
+<section class="banner">
+  <div class="headintro">
+    <p class="title">HELLO, IM CORA</p>
+    <p class="subtitle">三流代码 &amp; 一流Bug</p>
+  </div>
+</section>
+
+
+
+<section class="posts">
+  
+    <article class="post">
+      <div class="post-meta">
+        <span class="post-time">2019-06-27</span>
+      </div>
+      <div class="post-title">
+        
+          <a class="post-title-link" href="/2019/06/27/键盘遮挡问题/">
+            
+              Untitled
+            
+          </a>
+          
+        
+        <div class="post-tags">
+          
+        </div>
+      </div>
+      <div class="post-content">
+
+        
+
+        
+        <h2 id="移动端键盘遮挡问题"><a href="#移动端键盘遮挡问题" class="headerlink" title="移动端键盘遮挡问题"></a>移动端键盘遮挡问题</h2><h3 id="控件点击时元素上移"><a href="#控件点击时元素上移" class="headerlink" title="控件点击时元素上移"></a>控件点击时元素上移</h3><p>代码如下</p>
+<p> var WeekPlans = document.querySelector(‘#YiJiao’); </p>
+<pre><code>var bodyHeight = document.body.offsetHeight;
+WeekPlans.onclick = function (ev) {
+    document.querySelector(&apos;body&apos;).style.height = (window.innerHeight + 850) + &apos;px&apos;;
+    WeekPlans.style.position = &apos;static&apos;;
+    setTimeout(function () {
+        document.body.scrollTop = document.documentElement.scrollTop = WeekPlans.getBoundingClientRect().top + pageYOffset;
+    }, 50);
+    window.addEventListener(&apos;touchmove&apos;, fn, false);
+}
+WeekPlans.onblur = function () {
+    document.querySelector(&apos;body&apos;).style.height = &quot;auto&quot;
+    document.querySelector(&apos;body&apos;).removeAttribute(&apos;style&apos;)
+    window.removeEventListener(&apos;touchmove&apos;, fn, false)
+}
+//触摸取消blur
+function fn(ev) {
+    var _target = ev.target || ev.srcElement;
+    if (_target.nodeName != &apos;INPUT&apos;) {
+        WeekPlans.blur();
+    }
+    ev.preventDefault()
+};
+</code></pre><p>​</p>
+
+        
+      </div>
+    </article>
+  
+    <article class="post">
+      <div class="post-meta">
+        <span class="post-time">2019-06-27</span>
+      </div>
+      <div class="post-title">
+        
+          <a class="post-title-link" href="/2019/06/27/layerScroll/">
+            
+              Untitled
+            
+          </a>
+          
+        
+        <div class="post-tags">
+          
+        </div>
+      </div>
+      <div class="post-content">
+
+        
+
+        
+        <h2 id="小陆的第一篇blog"><a href="#小陆的第一篇blog" class="headerlink" title="小陆的第一篇blog"></a>小陆的第一篇blog</h2><p><strong>移动端layer弹出层的滚动</strong> </p>
+<h3 id="安卓系统中，弹出iframe、layer默认不可滚动"><a href="#安卓系统中，弹出iframe、layer默认不可滚动" class="headerlink" title="安卓系统中，弹出iframe、layer默认不可滚动"></a>安卓系统中，弹出iframe、layer默认不可滚动</h3><p>在弹出层不影响body层的情况下进行滚动</p>
+<p>以下代码:</p>
+<pre><code>var divScroll = new DivScroll(&apos;.layerNode&apos;);
+ //弹出层滚动条不影响到body [layerNode：需要滚动的元素]
+ var DivScroll = function (layerNode) {
+     //如果没有这个元素的话，那么将不再执行下去
+     if (!document.querySelector(layerNode)) return;
+
+     this.popupLayer = document.querySelector(layerNode);
+     this.startX = 0;
+     this.startY = 0;
+
+     this.popupLayer.addEventListener(&apos;touchstart&apos;, function (e) {
+         this.startX = e.changedTouches[0].pageX;
+         this.startY = e.changedTouches[0].pageY;
+     }, false);
+
+     // 仿innerScroll方法
+     this.popupLayer.addEventListener(&apos;touchmove&apos;, function (e) {
+
+         e.stopPropagation();
+
+         var deltaX = e.changedTouches[0].pageX - this.startX;
+         var deltaY = e.changedTouches[0].pageY - this.startY;
+
+         // 只能纵向滚
+         if (Math.abs(deltaY) &lt; Math.abs(deltaX)) {
+             e.preventDefault();
+             return false;
+         }
+
+         if (this.offsetHeight + this.scrollTop &gt;= this.scrollHeight) {
+             if (deltaY &lt; 0) {
+                 e.preventDefault();
+                 return false;
+             }
+         }
+         if (this.scrollTop === 0) {
+             if (deltaY &gt; 0) {
+                 e.preventDefault();
+                 return false;
+             }
+         }
+         // 会阻止原生滚动
+         // return false;
+     }, false);
+
+ }
+</code></pre>
+        
+      </div>
+    </article>
+  
+</section>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2017 - 2019</span>
+      
+      <span class="author"><i class="fa fa-user"></i>�����̵�Ȧ��Ů��</span>
+    </div>
+    
+      <span>Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </span>
+    
+    
+      <span>|</span> <span>Theme - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  </body>
+</html>
